@@ -27,6 +27,32 @@ rabbit.scale =0.09;
 rabbit.addImage(rabbitImg);
 }
 
+
+function draw() {
+  background(0);
+
+  rabbit.x = World.mouseX;
+
+  edges= createEdgeSprites();
+  rabbit.collide(edges);
+  
+  drawSprites();
+
+  var select_sprites = Math.round(random(1,3));
+
+if (frameCount % 80 == 0) {
+  if(select_sprites == 1) {
+    createApples();
+  }
+  else if(select_sprites == 2){
+    createOrange();
+  }
+  else {
+    createRed();
+  }
+}
+  
+}
 function createApples() {
 apple = createSprite(random(50,350),40,10,10);
 apple.addImage(appleImg);
@@ -51,34 +77,6 @@ function createRed(){
   redL.scale=0.06;
   redL.velocityY = 3;
   redL.lifetime = 150;
-}
-
-
-
-function draw() {
-  background(0);
-
-  rabbit.x = World.mouseX;
-
-  edges= createEdgeSprites();
-  rabbit.collide(edges);
-
-  var select_sprites = Math.round(random(1,3));
-
-if (frameCount % 80 == 0) {
-  if(select_sprites == 1) {
-    createApples();
-  }
-  else if(select_sprites == 2){
-    createOrange();
-  }
-  else {
-    createRed();
-  }
-}
-
-  drawSprites();
-  
 }
 
 
